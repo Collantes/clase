@@ -74,7 +74,27 @@ export class ModalComponent implements OnInit {
     };
     this.employeeService.guardar(save).subscribe( response => {
       if(response.success) {
-        this.activeModal.close({success: true});
+        this.activeModal.close({success: true, message: response.message});
+      }
+    });
+  }
+
+  update(data: any): any {
+    const save: any = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      phoneNumber: data.phoneNumber,
+      hireDate: data.hireDate,
+      salary: data.salary,
+      commissionPct: data.commissionPct,
+      departament: {
+        depaId: data.depaId
+      }
+    };
+    this.employeeService.modificar(this.item.idEmployee, save).subscribe( response => {
+      if(response.success) {
+        this.activeModal.close({success: true, message: response.message});
       }
     });
   }

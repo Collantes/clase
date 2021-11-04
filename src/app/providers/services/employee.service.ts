@@ -19,4 +19,12 @@ export class EmployeeService {
   public guardar(data: any): Observable<IResponse> {
     return this.httpClient.post<IResponse>(this.apiUrl, data);
   }
+
+  public modificar(id: string, data: any): Observable<IResponse> {
+    return this.httpClient.put<IResponse>(`${this.apiUrl}/${id}`, data); // ALT + 96 `
+  }
+
+  public eliminar(id: string): Observable<IResponse> {
+    return this.httpClient.delete<IResponse>(`${this.apiUrl}/${id}`);
+  }
 }

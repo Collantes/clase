@@ -71,13 +71,13 @@
   <span>Formulario Touched</span>
   <pre>{{formEmpleado.controls['firstName'].touched}}</pre>
   <br>
-  -->
+
   <span>Formulario Json</span>
   <pre>{{formEmpleado.value | json}}</pre>
-
+  -->
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-primary" *ngIf="title==='Nuevo'" [disabled]="!formEmpleado.valid" (click)="save(formEmpleado.value)">Guardar</button>
-  <button type="button" class="btn btn-primary" *ngIf="title==='Modificar'" [disabled]="!formEmpleado.valid">Modificar</button>
+  <button type="button" class="btn btn-primary" *ngIf="title==='Modificar'" [disabled]="!formEmpleado.valid" (click)="update(formEmpleado.value)">Modificar</button>
   <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
 </div>
