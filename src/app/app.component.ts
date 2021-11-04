@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'clase';
+
+  docente: string = 'Hitler Collantes';
+  curso: string = 'Lenguaje de Programación II';
+
 }

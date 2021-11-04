@@ -1,0 +1,83 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">{{title}} Empleado</h4>
+  <button type="button" class="close" aria-label="Close button" aria-describedby="modal-title" (click)="activeModal.dismiss()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="formEmpleado">
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Nombres</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="firstName" placeholder="Ingrese nombres">
+        <span class="form-text text-danger" *ngIf="validaForm('firstName')">Ingrese nombre</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Apellidos</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="lastName">
+        <span class="form-text text-danger" *ngIf="validaForm('lastName')">Ingrese apellidos</span>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Correo</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="email">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Teléfono</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="phoneNumber">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Fecha de Contrato</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" formControlName="hireDate">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Salario</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" formControlName="salary">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Comisión (%)</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" formControlName="commissionPct">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-sm-3 col-form-label">Departamento</label>
+      <div class="col-sm-9">
+        <select class="form-control" formControlName="depaId">
+          <option *ngFor="let departament of departaments" [value]="departament.depaId">
+            {{departament.depaNombre}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </form>
+  <!--
+  <span>Formulario Valid</span>
+  <pre>{{formEmpleado.valid}}</pre>
+  <br>
+  <span>Formulario Errors</span>
+  <pre>{{formEmpleado.controls['firstName'].errors | json}}</pre>
+  <br>
+  <span>Formulario Touched</span>
+  <pre>{{formEmpleado.controls['firstName'].touched}}</pre>
+  <br>
+  -->
+  <span>Formulario Json</span>
+  <pre>{{formEmpleado.value | json}}</pre>
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" *ngIf="title==='Nuevo'" [disabled]="!formEmpleado.valid" (click)="save(formEmpleado.value)">Guardar</button>
+  <button type="button" class="btn btn-primary" *ngIf="title==='Modificar'" [disabled]="!formEmpleado.valid">Modificar</button>
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Cancelar</button>
+</div>
