@@ -89,11 +89,10 @@ export class ModalComponent implements OnInit {
       hireDate: data.hireDate,
       salary: data.salary,
       commissionPct: data.commissionPct,
-      depaId: data.depaId,
+      depaId: data.departament.depaId,
     });
-
   }
-  // firstName, lastName, email
+
   validaForm(campo: string): any {
     return this.formEmpleado.controls[campo].errors &&
       this.formEmpleado.controls[campo].touched;

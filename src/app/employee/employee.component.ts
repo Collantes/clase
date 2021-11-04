@@ -40,7 +40,6 @@ export class EmployeeComponent implements OnInit {
   }
 
   update(item: any): any {
-    console.log(item);
     const modal = this.modalService.open(ModalComponent, {
       size: "lg",
       keyboard: false,
